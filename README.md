@@ -84,20 +84,31 @@ We have a detailed section on [deploying a Speckle server](https://speckle.guide
 
 ## TL;DR
 
-We're using yarn and its workspaces functionalities to manage the monorepo.
-Make sure you are using [Node](https://nodejs.org/en) version 18.
-To get started, run:
+Assuming you have:
 
-1. `corepack enable`
-1. `yarn`
-1. `yarn build`
+- [git with ssh key auth](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
+- [Node 18](https://nodejs.org/en).
+- [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/install/).
 
-After this, you can use the scripts in the individual packages or run them all in dev mode:
+Also don't worry if you don't have all of these, the detailed instructions provide more info on alternative ways to achieve the same thing.
+This is a high efficiency getting started step list.
 
-- `yarn dev`
+### Steps
 
-For development you'll also want to run `yarn dev:docker:up` which will start up the docker containers you will need
-to be able to run the apps on your machine.
+1. `git clone https://github.com/specklesystems/speckle-server.git`
+2. `corepack enable`
+3. `yarn`
+4. `yarn build`
+5. `yarn dev:docker:up`
+6. `cp packages/server/.env-example packages/server/.env`
+7. `cp packages/server/.env.test-example packages/server/.env.test`
+8. `cp packages/frontend-2/.env.example packages/frontend-2/.env`
+9. `cp packages/dui3/.env.example packages/dui3/.env`
+10. `yarn dev`
+
+Wait for the frontend to build, and voila, you have a fully functional Speckle Server running at [http://localhost:3000](http://localhost:3000).
+
+To run a specific part of the Speckle server stack, go to the [components](#components) section
 
 ## IDE
 
